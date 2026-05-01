@@ -3,8 +3,11 @@ package vinix.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,6 +17,9 @@ public class User implements Serializable{
 	
 	@Id
 	private String name;
+	
+	@OneToOne(mappedBy = "cpf", cascade = CascadeType.ALL)
+	@MapsId
 	private String cpf;
 	private String email;
 

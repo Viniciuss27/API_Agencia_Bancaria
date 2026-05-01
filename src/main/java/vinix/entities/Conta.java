@@ -3,8 +3,13 @@ package vinix.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,9 +18,14 @@ public class Conta implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numeroConta;
 	private User pessoa;
 	private Double saldo = 0.0;
+	
+	@OneToOne
+	@JsonIgnore
+	private User cpf;
 	
 	public Conta() {}
 
