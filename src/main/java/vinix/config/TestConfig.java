@@ -42,6 +42,7 @@ public class TestConfig implements CommandLineRunner{
 		c1.getDepositar(155.0);
 		c2.getDepositar(500.0);
 		c3.getSacar(200.0);
+		c4.getTransferir(20.0, c5);
 		
 		cr.saveAll(Arrays.asList(c1,c2,c3,c4,c5));
 		

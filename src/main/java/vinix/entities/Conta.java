@@ -69,11 +69,28 @@ public class Conta implements Serializable {
 	}
 	
 	public void getSacar(Double valor) {
+		if(valor > getSaldo()) {
 		setSaldo(getSaldo() - valor);
+		}else {
+			System.out.println("valor indisponivel para saque");
+		}
 	}
 	
 	public void getDepositar(Double valor) {
+		if(valor > 0) {
 		setSaldo(getSaldo() - valor);
+	    }else { 
+	    	System.out.println("só pode depositar valor acima de R$ 0,0");
+	    }
+	}
+	
+	public void getTransferir(Double valor, Conta conta) {
+		if(valor > 0 && conta.saldo >= valor) {
+			setSaldo(getSaldo() - valor);
+			conta.saldo = conta.getSaldo() + valor;
+		}else {
+			System.out.println("não pode transferir");
+		}
 	}
 
 	@Override
