@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -25,10 +24,9 @@ public class Conta implements Serializable {
     private String cpf;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
-    public Conta(User p) {}
+    public Conta() {}
 
     public Conta(Integer numeroConta, String cpf, Double saldo) {
         this.numeroConta = numeroConta;
