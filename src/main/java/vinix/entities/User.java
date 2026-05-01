@@ -3,32 +3,34 @@ package vinix.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_user")
-public class User implements Serializable{
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	private String name;
-	
-	@OneToOne(mappedBy = "cpf", cascade = CascadeType.ALL)
-	@MapsId
 	private String cpf;
-	private String email;
+    private String name;
+
+    private String email;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "user")
+    private Conta conta;
 
 	public User() {}
 
 	public User(String name, String cpf, String email) {
 		super();
-		this.cpf = cpf;
 		this.name = name;
+		this.cpf = cpf;
 		this.email = email;
 	}
 
@@ -38,6 +40,14 @@ public class User implements Serializable{
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
 	}
 
 	public String getName() {
@@ -58,7 +68,7 @@ public class User implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf);
+		return Objects.hash(name);
 	}
 
 	@Override
@@ -70,6 +80,8 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(cpf, other.cpf);
+		return Objects.equals(name, other.name);
 	}
+
+	
 }

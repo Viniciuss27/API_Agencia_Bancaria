@@ -3,38 +3,38 @@ package vinix.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_conta")
-public class Conta implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer numeroConta;
-	private User pessoa;
-	private Double saldo = 0.0;
-	
-	@OneToOne
-	@JsonIgnore
-	private User cpf;
-	
-	public Conta() {}
+public class Conta implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	public Conta(Integer numeroConta, User pessoa, Double saldo) {
-		super();
-		this.numeroConta = numeroConta;
-		this.pessoa = pessoa;
-		this.saldo = saldo;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer numeroConta;
+
+    private Double saldo;
+    
+    private String cpf;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Conta() {}
+
+    public Conta(Integer numeroConta, String cpf, Double saldo) {
+        this.numeroConta = numeroConta;
+        this.saldo = saldo;
+        this.cpf = cpf;
+    }
 
 	public Integer getNumeroConta() {
 		return numeroConta;
@@ -44,12 +44,12 @@ public class Conta implements Serializable{
 		this.numeroConta = numeroConta;
 	}
 
-	public User getPessoa() {
-		return pessoa;
+	public User getUser() {
+		return user;
 	}
 
-	public void setPessoa(User pessoa) {
-		this.pessoa = pessoa;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Double getSaldo() {
@@ -59,12 +59,12 @@ public class Conta implements Serializable{
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-	
-	public User getCpf() {
+
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(User cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
