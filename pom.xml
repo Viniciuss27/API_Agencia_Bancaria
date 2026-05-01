@@ -8,24 +8,12 @@
 		<version>4.0.6</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>vinix</groupId>
 	<artifactId>Agencia</artifactId>
 	<version>4.0.0</version>
 	<name>Agencia</name>
-	<description>sistema de empresa</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<description>sistema de banco</description>
+	
 	<properties>
 		<java.version>25</java.version>
 	</properties>
