@@ -67,6 +67,14 @@ public class Conta implements Serializable {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	public void getSacar(Double valor) {
+		setSaldo(getSaldo() - valor);
+	}
+	
+	public void getDepositar(Double valor) {
+		setSaldo(getSaldo() - valor);
+	}
 
 	@Override
 	public int hashCode() {

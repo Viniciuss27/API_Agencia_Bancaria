@@ -32,13 +32,18 @@ public class TestConfig implements CommandLineRunner{
 		User o5 = new User("rian", "55555","rian@gmail.com");
 		ur.saveAll(Arrays.asList(o1,o2,o3,o4,o5));
 		
-        Conta c1 = new Conta(null, o1.getCpf(), 400000.0);
-		Conta c2 = new Conta(null, o2.getCpf(), 454.0);
-		Conta c3 = new Conta(null, o3.getCpf(), 564.0);
-		Conta c4 = new Conta(null, o4.getCpf(), 7000.0);
-		Conta c5 = new Conta(null, o5.getCpf(), 40.0);
+        Conta c1 = new Conta(null, o1.getCpf(), 500.0);
+		Conta c2 = new Conta(null, o2.getCpf(), 500.0);
+		Conta c3 = new Conta(null, o3.getCpf(), 500.0);
+		Conta c4 = new Conta(null, o4.getCpf(), 500.0);
+		Conta c5 = new Conta(null, o5.getCpf(), 500.0);
 		cr.saveAll(Arrays.asList(c1,c2,c3,c4,c5));
 		
+		c1.getDepositar(155.0);
+		c2.getDepositar(500.0);
+		c3.getSacar(200.0);
+		
+		cr.saveAll(Arrays.asList(c1,c2,c3,c4,c5));
 		
 	}
 
