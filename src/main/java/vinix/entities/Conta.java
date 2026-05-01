@@ -28,7 +28,7 @@ public class Conta implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Conta() {}
+    public Conta(User p) {}
 
     public Conta(Integer numeroConta, String cpf, Double saldo) {
         this.numeroConta = numeroConta;
