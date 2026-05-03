@@ -28,7 +28,9 @@ public class Conta implements Serializable {
 
     public Conta() {}
 
-    public Conta(Integer numeroConta, String cpf, Double saldo) {
+    public Conta(User user, Integer numeroConta, String cpf, Double saldo) {
+    	super();
+    	this.user = user;
         this.numeroConta = numeroConta;
         this.saldo = saldo;
         this.cpf = cpf;
