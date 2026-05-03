@@ -25,6 +25,8 @@ public class TestConfig implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		/* --------- USARIOS ---------*/
+		
 		User o1 = new User("maria", "11111", "maria@gmail.com");
 		User o2 = new User("marcos", "22222", "marcos@gmail.com");
 		User o3 = new User("marta", "33333", "marta@gmail.com");
@@ -32,12 +34,16 @@ public class TestConfig implements CommandLineRunner{
 		User o5 = new User("rian", "55555","rian@gmail.com");
 		ur.saveAll(Arrays.asList(o1,o2,o3,o4,o5));
 		
+		/* -------- CONTAS --------*/
+		
         Conta c1 = new Conta(o1, null, o1.getCpf(), 500.0);
 		Conta c2 = new Conta(o2, null, o2.getCpf(), 500.0);
 		Conta c3 = new Conta(o3, null, o3.getCpf(), 500.0);
 		Conta c4 = new Conta(o4, null, o4.getCpf(), 500.0);
 		Conta c5 = new Conta(o5, null, o5.getCpf(), 500.0);
 		cr.saveAll(Arrays.asList(c1,c2,c3,c4,c5));
+		
+		/* ------- METODOS ----------*/
 		
 		c1.getDepositar(155.0);
 		c2.getDepositar(500.0);
